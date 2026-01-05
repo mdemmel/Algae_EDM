@@ -1,0 +1,145 @@
+---
+title: "algae_edm_data_cleanup_12.24"
+output: html_document
+date: "2024-12-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# necessary packages
+```{r}
+library(phyloseq)
+library(ggplot2) 
+library(tidyverse)
+library(lubridate)
+```
+
+# read in data
+```{r}
+getwd()
+otu_mat<- read.csv("../data/OTU_abundance.csv", header= T, check.names=FALSE, row.names=1)
+tax_mat<- read.csv("../data/OTU_Taxonomy.csv", header= T, row.names=1)
+samples_df <- read.csv("../data/Metadata.csv", header= T, row.names=1)
+
+```
+
+# create phyloseq object
+```{r}
+# specify the factor levels in the order you want
+samples_df$Site <- factor(samples_df$Site, levels = c("Cyanotech", "UCSD", "NMSU"))
+
+##########Do not run these two lines of code if you want to do the barplots
+samples_df$Date<-as.POSIXct(samples_df$Date)
+samples_df$Date <- as.Date(samples_df$Date)
+
+#fixing dates
+samples_df$year<-year(samples_df$Date)
+samples_df$month<-month(samples_df$Date)
+
+samples_df$year <- as.factor(samples_df$year)
+samples_df$month <- as.factor(samples_df$month)
+
+###################
+#Transform to matrix, sample table can be left as data frame
+otu_mat <- as.matrix(otu_mat)
+tax_mat <- as.matrix(tax_mat)
+
+#Transform to phyloseq objects
+OTU = otu_table(otu_mat, taxa_are_rows = TRUE)
+TAX = tax_table(tax_mat)
+samples = sample_data(samples_df)
+
+carbom <- phyloseq(OTU, TAX, samples)
+carbom
+
+
+#######get rid of OTUs other than bacteria
+carbom <- carbom %>%
+  subset_taxa(
+    Domain == "d__Bacteria" &
+      Family  != "f__Mitochondria" &
+      Order   != "o__Chloroplast"
+  )
+carbom ####lowered to 3224 OTUs instead of 3324
+
+#####getting rid of P4 from UCSD and outliers detected
+carbom <- carbom %>%
+  subset_samples(
+    Pond != "UCSD-P4" & 
+      Name != "UCSD_P2_2021/09/06" & 
+      Name != "UCSD_P1_2021/03/22" & 
+      Name != "UCSD_P2_2020/10/26"
+  )
+carbom
+
+#########Removing singletons and doubletons
+##Removing singletons or doubletons OTUs
+bacterial_phyloseq_doubltons_removed <- prune_taxa(taxa_sums(carbom) > 2, carbom)
+bact_rel_abund = transform_sample_counts(bacterial_phyloseq_doubltons_removed, function(x) x / sum(x))
+```
+# inspect data
+```{r}
+dat = data.frame(sample_data(bact_rel_abund))
+dat %>% filter(Pond=='UCSD-P1') %>% ggplot(aes(x = Date, y = Prod_over_time)) + 
+  geom_point(aes(color = Bleach_Dose)) + geom_line()
+
+
+d1 = dat %>% filter(Pond=='UCSD-P1') %>%
+  arrange(Date) %>%  # Ensure the data is sorted by Date
+  mutate(Date_diff = c(NA, diff(Date))) 
+
+d1 %>% arrange(Date)
+
+hist(d1$Date_diff, breaks=25)
+
+dat = dat %>% filter(Pond=='UCSD-P1') %>% arrange(Date)
+
+## add intermediate dates (where greater than 7 days passed)
+add_intermediate_dates <- function(dat) {
+  # Ensure 'Date' is of Date class
+  dat$Date <- as.Date(dat$Date)
+  
+  # Create an empty list to store the rows
+  new_rows <- list()
+  
+  # Loop through each pair of consecutive rows
+  for (i in 2:nrow(dat)) {
+    # If Date_diff is greater than 7+4, add intermediate dates
+    if (as.numeric(dat$Date[i] - dat$Date[i - 1]) > 11) {
+      # Generate a sequence of dates between the two rows
+      
+      # number of intermediate dates to include
+      num_dates = as.numeric(dat$Date[i] - dat$Date[i - 1])/7 - 1
+      (dat$Date[i] - dat$Date[i - 1])
+      
+      # seq_
+      seq_dates <- seq(from = dat$Date[i - 1], to = dat$Date[i]-1, by = "day")
+      seq_dates = seq_dates[-1]
+      seq_dates = as.character(seq_dates)
+      
+      # Create rows for intermediate dates with NA for other columns
+      for (d in seq_dates) {
+        new_row <- dat[i, ]
+        new_row$Date <- as.Date(d)
+        new_row[,-which(names(new_row) %in% c("Date", "Type", "Description", "Site", "Replicate", "Pond"))] <- NA  # Set other columns to NA
+        new_rows <- append(new_rows, list(new_row))
+        }
+    }
+  }
+  
+  # Combine the original data frame with the new rows
+  result <- bind_rows(dat, do.call(rbind, new_rows)) %>%
+    arrange(Date)  # Re-sort by Date to maintain correct order
+  
+  return(result)
+}
+
+# Example usage with your dataframe df
+dat <- add_intermediate_dates(dat)
+
+# View the result
+head(df)
+```
+

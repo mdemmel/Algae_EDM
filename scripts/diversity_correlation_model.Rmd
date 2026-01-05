@@ -1,0 +1,329 @@
+---
+title: "diversity_correlation_model"
+output: html_document
+date: "2025-05-15"
+---
+
+```{r}
+library(ggplot2)
+library(reshape2)
+library(tidyverse)
+```
+
+
+# functions
+```{r}
+pairwise_row_cov <- function(mat) {
+  #mat <- as.matrix(df)
+  row_means <- rowMeans(mat)
+  centered <- mat - row_means
+  
+  cov_matrix <- centered %*% t(centered) / (ncol(mat) - 1)
+  
+    row_sds <- sqrt(rowSums(centered^2) / (ncol(mat) - 1))
+  denom_matrix <- outer(row_sds, row_sds)
+  
+  corr_matrix <- cov_matrix / denom_matrix
+  return(list(cov_matrix, corr_matrix))
+  }
+
+
+pearson <- function()
+
+```
+
+# set up model - NEW
+```{r}
+N_species = 100 # number of species
+sims = 100 # number of simulations
+#n = 50
+
+div_list = list()
+
+#all_cors = data.frame()
+all_cors_list <- list()
+ind = 1
+
+for(n in 2:N_species) {
+  sims_list = list()
+    if(n %% 10 == 0) {print(n)}
+
+  for(i in 1:sims) {
+    # give n species
+    #abunds = data.frame(matrix(ncol = n, nrow=t)) # set up abunds
+    abunds = matrix(ncol = n, nrow=50)
+    pops = abs(rnorm(n, mean = 100, sd = 50))
+    for(t in 1:50) {
+      abunds[t,] = pops
+      growth_rates = rnorm(n, mean = 0, sd = 0.2)
+      pops = pops + pops*growth_rates
+      #pops[pops < 0] = 1 # no possibility of extinction
+      pops[pops < 0] = 0 # extinction possible
+    }
+    #sims_list[[i]] = abunds
+    rel_abunds = (abunds/rowSums(abunds)) # rows are time points, columns are species
+    rel_abunds = t(rel_abunds)
+    abunds = t(abunds)
+    
+    # ABSOLUTE
+    l1 = pairwise_row_cov(abunds)
+    covs_abs = l1[[1]]; cors_abs = l1[[2]]
+    
+    # RELATIVE
+    l2 = pairwise_row_cov(rel_abunds)
+    covs_rel = l2[[1]]; cors_rel = l2[[2]]
+    
+    
+    # add everything to dataframe together
+    corrs = melt(covs_abs); colnames(corrs)[3] = 'cov_abs'
+    corrs$cor_abs = melt(cors_abs)$value
+    corrs$cov_rel = melt(covs_rel)$value
+    corrs$cor_rel = melt(cors_rel)$value
+    
+    corrs$Var1 = as.character(corrs$Var1); corrs$Var2 = as.character(corrs$Var2)
+    corrs <- corrs %>% mutate(both_var = ifelse(Var1 > Var2, paste0(Var1, "_", Var2), paste0(Var2, "_", Var1)))
+    corrs = corrs[!duplicated(corrs$both_var),]
+    corrs = corrs[corrs$Var1 != corrs$Var2,]
+    #cor = data.frame(mean_corr = mean(corrs$value), N_species = n, simulation = i)
+    corrs$richness = sum(abunds[,50]>0)
+    corrs$N_species = n
+
+    corrs$sim = i
+    #corrs$N_species = n
+    
+    all_cors_list[[ind]] <- corrs
+    ind = ind+1
+
+  }
+  #div_list[[n]] = sims_list
+}
+all_cors = do.call(rbind, all_cors_list)
+```
+
+
+```{r}
+# all correlations
+all_cors %>% group_by(N_species) %>% summarise(mean = mean((cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean)) + geom_point() + geom_line() + ylim(0, 1) + theme_bw() +
+  ylab('mean pearson correlation') + xlab('number of species')
+
+all_cors %>% group_by(N_species) %>% summarise(mean = mean(abs(cor_abs)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean)) + geom_point() + geom_line() + ylim(0, 1) + theme_bw() +
+  ylab('mean pearson correlation') + xlab('number of species')
+
+# negatuve vs positive
+all_cors$sign_cor = ifelse(all_cors$cor_rel <= 0, 'neg', 'pos')
+all_cors %>% group_by(N_species, sign_cor) %>% summarise(mean = mean((cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean, color = sign_cor)) + geom_point() + geom_line()  + theme_bw() +
+ #scale_color_manual(values = cols) +
+  ylab('mean pearson correlation') + xlab('number of species')
+
+
+quants = quantile(abs(all_cors$cor_abs))
+
+
+hist(abs(all_cors$cor_abs))
+
+cols = c('#002642', '#840032', '#e59500', '#08a045')
+
+
+all_cors = all_cors %>% mutate(cor_abs_bin = case_when(abs(cor_abs) <= 1 & abs(cor_abs) > quants[4] ~ '75-100% (cor>0.63)',
+                                            abs(cor_abs) <= quants[4] & abs(cor_abs) > quants[3] ~ '50-75% (cor>0.43)',
+                                            abs(cor_abs) <= quants[3] & abs(cor_abs) > quants[2] ~ '25-50% (cor>0.22)',
+                                            abs(cor_abs) < quants[2] ~ '0-25% (cor>0)')
+                    )
+
+
+all_cors %>% group_by(N_species, cor_abs_bin) %>% summarise(mean = mean(abs(cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean, color = cor_abs_bin)) + geom_point() + geom_line() + ylim(0, 1) + theme_bw() +
+  scale_color_manual(values = cols) +
+  ylab('mean pearson correlation') + xlab('number of species')# +
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd))
+
+
+all_cors %>% filter(cor_abs_bin == '0-25% (cor>0)') %>% group_by(N_species) %>% summarise(mean = mean(abs(cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean)) + geom_point(color = '#002642') + geom_line() + #ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species') +
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd), color='#002642') + theme_bw()
+
+all_cors %>% filter(cor_abs_bin == '25-50% (cor>0.22)') %>% group_by(N_species) %>% summarise(mean = mean(abs(cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = N_species, y= mean)) + geom_point(color = '#840032') + geom_line() + #ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species') +
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd), color='') + theme_bw()
+
+  
+  all_cors %>% #group_by(N_species) %>% summarise(mean = mean(abs(cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = cor_abs, y= cor_rel)) + geom_point(aes(color=N_species))# + geom_line() +# ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species') #+
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd))
+  
+  
+all_cors %>% filter(N_species == 10) %>%
+  #group_by(N_species) %>% summarise(mean = mean(abs(cor_rel)), sd = sd(cor_rel)) %>%
+  ggplot(aes(x = cor_abs, y= cor_rel)) + geom_point(aes(color=N_species))# + geom_line() +# ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species') #+
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd))
+
+
+```
+# check for correlation between absolute and relative abundances
+```{r}
+rel_abs = data.frame(N_species = numeric(100), correlation = numeric(100))
+
+for(n in unique(all_cors$N_species)) {
+  temp = all_cors %>% filter(N_species == n)
+  rel_abs$N_species[n] = n
+  rel_abs$correlation[n] = cor(temp$cor_abs, temp$cor_rel)
+  ggplot(temp, aes(x = cor_abs, y = cor_rel)) + geom_point() + theme_bw() + ggtitle(paste0(n, ' species')) + xlab('absolute abundance cors') + ylab('relative abundance cors')
+}
+
+
+rel_abs %>% ggplot(aes(x = N_species, y = correlation)) + geom_point() + geom_line() + theme_bw()
+```
+
+
+# set up model 
+```{r}
+N_species = 100 # number of species
+sims = 50 # number of simulations
+#n = 50
+
+div_list = list()
+
+all_cors = data.frame()
+for(n in 2:N_species) {
+  sims_list = list()
+    if(n %% 10 == 0) {print(n)}
+
+  for(i in 1:sims) {
+    # give n species
+    #abunds = data.frame(matrix(ncol = n, nrow=t)) # set up abunds
+    abunds = matrix(ncol = n, nrow=t)
+    pops = abs(rnorm(n, mean = 100, sd = 50))
+    for(t in 1:50) {
+      abunds[t,] = pops
+      growth_rates = rnorm(n, mean = 0, sd = 0.2)
+      pops = pops + pops*growth_rates
+      #pops[pops < 0] = 1 # no possibility of extinction
+      #if(sum(pops < 0) > 0){print('pop < 0')}
+      pops[pops < 0] = 0 # extinction possible
+    }
+    #sims_list[[i]] = abunds
+    abunds = (abunds/rowSums(abunds))
+    covs = cov(abunds)
+    corrs = cor(abunds)
+    corrs = melt(corrs)
+    corrs$cov = melt(covs)$value
+    corrs$Var1 = as.character(corrs$Var1); corrs$Var2 = as.character(corrs$Var2)
+    corrs <- corrs %>% mutate(both_var = ifelse(Var1 > Var2, paste0(Var1, "_", Var2), paste0(Var2, "_", Var1)))
+    corrs = corrs[!duplicated(corrs$both_var),]
+    corrs = corrs[corrs$Var1 != corrs$Var2,]
+    #cor = data.frame(mean_corr = mean(corrs$value), N_species = n, simulation = i)
+    corrs$richness = sum(abunds[50,]>0)
+    corrs$N_species = n
+
+    corrs$sim = i
+    #corrs$N_species = n
+    
+    all_cors = rbind(all_cors, corrs)
+  }
+  #div_list[[n]] = sims_list
+}
+
+cov(abunds)
+
+cor(abunds$X1, abunds$X2)
+
+unique(all_cors$N_species)
+all_cors
+
+all_cors %>% group_by(N_species) %>% summarise(mean = mean(abs(value)), sd = sd(cov)) %>%
+  ggplot(aes(x = N_species, y= mean)) + geom_point() + geom_line() #+ ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species') #+
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd))
+
+
+all_cors %>% group_by(N_species) %>% summarise(mean = mean(abs(value)), sd = sd(value), mean_cov = mean(abs(cov))) %>%
+  ggplot(aes(x = N_species)) + geom_point(aes( y= log(mean_cov/mean))) + geom_line(aes( y= log(mean_cov/mean))) #+
+  geom_point(aes( y= mean_cov), color = 'red') + geom_line(aes( y= mean_cov), color = 'red')
+  #+ ylim(0, 1) + theme_bw() +
+  ylab('mean correlation') + xlab('Number of species')
+
+ggplot(all_cors, aes(x = as.factor(N_species), y = abs(value))) + geom_boxplot()
+
+abunds = (abunds/rowSums(abunds))
+
+abunds$time = 1:nrow(abunds)
+
+abund_long = melt(rel_abunds, id = 'time')
+
+abund_long %>% ggplot(aes(x = time, y = value, fill = variable)) + geom_col()
+
+
+abunds$time = 1:nrow(abunds)
+
+abund_long = melt(abunds, id = 'time')
+
+abund_long %>% ggplot(aes(x = time, y = value, fill = variable)) + geom_col()
+```
+```{r}
+abunds$time = 1:nrow(abunds)
+df_long <- abunds %>%
+  pivot_longer(
+    cols = -time,
+    names_to = "species",
+    values_to = "relative_abundance"
+  )
+
+# Plot stacked bar chart
+ggplot(df_long, aes(x = factor(time), y = relative_abundance, fill = species)) +
+  geom_bar(stat = "identity") +
+  labs(
+    x = "Time",
+    y = "Relative Abundance",
+    title = "Stacked Bar Plot of Species Relative Abundance Over Time"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 14),
+    legend.title = element_blank()
+  )
+
+mean(abs((all_cors %>% filter(N_species == 100))$value))
+```
+
+```{r}
+hist(abs((all_cors %>% filter(N_species == 100))$value))
+plot(abunds$X1, abunds$X2)
+all_cors %>% filter(Var1 == 'X2' & Var2 == 'X1' & N_species==100)
+```
+
+```{r}
+all_cors %>% group_by(N_species) %>% #summarise(mean = mean(abs(value)), sd = sd(value)) %>%
+  ggplot(aes(x = as.factor(N_species), y= abs(value), color = N_species)) + #geom_point() + geom_line() + ylim(0, 1) + theme_bw()# +
+  geom_violin() +
+  ylab('mean correlation') + xlab('Number of species') #+
+  geom_errorbar(aes(ymin = mean-sd, ymax=mean+sd))
+```
+
+```{r}
+all_cors = data.frame()
+for(n in 2:N_species) {
+  if(n %% 10 == 0) {print(n)}
+  #sim_list = div_list[[n]]
+  for(i in 1:sims) {
+    abunds = sim_list[[i]]
+    abunds = (abunds/rowSums(abunds))
+    corrs = cor(abunds)
+    corrs = melt(corrs)
+    corrs$Var1 = as.character(corrs$Var1); corrs$Var2 = as.character(corrs$Var2)
+    corrs <- corrs %>% mutate(both_var = ifelse(Var1 > Var2, paste0(Var1, "_", Var2), paste0(Var2, "_", Var1)))
+    corrs = corrs[!duplicated(corrs$both_var),]
+    corrs$sim = i
+    corrs$N_species = n
+    all_cors = rbind(all_cors, corrs)
+  }
+}
+
+```
+

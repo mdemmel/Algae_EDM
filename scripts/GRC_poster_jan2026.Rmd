@@ -1,0 +1,430 @@
+---
+title: "GRC_poster_jan2026"
+output: html_document
+date: "2026-01-03"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("~/Desktop/PhD/Algae_16S/")
+```
+
+# load data
+```{r pressure, echo=FALSE}
+# Load necessary libraries
+library(tidyverse)
+library(phyloseq)
+library(ggplot2)
+library(ggpubr)
+
+# Read data
+meta <- read.csv("~/Desktop/PhD/Algae_16S/Metadata.csv")
+otus <- read.csv("~/Desktop/PhD/Algae_16S/OTU_abundance.csv")
+taxa <- read.csv("~/Desktop/PhD/Algae_16S/OTU_Taxonomy.csv")
+
+# Set OTU as rownames
+rownames(otus) <- otus$OTU
+otus$OTU <- NULL
+
+rownames(meta) = colnames(otus)
+rownames(taxa) = rownames(otus)
+tax = as.matrix(taxa)
+tax = tax[,-1]
+
+# create ps
+ps = phyloseq(otu_table(otus, taxa_are_rows = T), tax_table(tax), sample_data(meta))
+
+div = phyloseq::estimate_richness(ps, measures = c("Observed", "Shannon"))
+
+# Transpose and convert to relative abundances
+otus_t <- as.data.frame(t(otus))
+otus_t <- otus_t / rowSums(otus_t)
+
+#rowSums(otus_t)
+
+# Add sample IDs as column
+otus_t$Sample <- rownames(otus_t)
+otus_t$Sample = substring(otus_t$Sample, 2)
+otus_t$Sample = gsub("\\.", "-", otus_t$Sample)
+
+#intersect(otus_t$Sample, meta$Sample)
+
+# Merge with metadata
+all_dat_init <- merge(meta, otus_t, by = "Sample", all = TRUE)
+
+# add diversity info
+all_dat_init$richness = div$Observed
+all_dat_init$shannon = div$Shannon
+
+all_dat_init$datetime = as.Date(all_dat_init$Date)
+
+all_dat_init <- all_dat_init %>%
+  group_by(Pond) %>%
+  arrange(datetime, .by_group = TRUE) %>%
+  mutate(time = row_number() - 1) %>%
+  ungroup()
+
+all_dat_init$date_chr = as.character(all_dat_init$datetime)
+
+
+# Merge OTU taxonomy (assumes taxa has columns OTU and Phylum)
+otus_long <- all_dat_init %>%
+  pivot_longer(cols = starts_with("OTU"), names_to = "OTU", values_to = "Abundance") %>%
+  left_join(taxa, by = "OTU")
+```
+# add extra metadata
+```{r}
+extra_meta = read.csv("~/Desktop/PhD/Algae_16S/data-3186929-supplementary.csv")
+colnames(extra_meta)
+extra_meta = extra_meta[c('Date', 'Field.Site', 'Replicate', 'OD750')]
+extra_meta$datetime = as.Date(extra_meta$Date, "%m/%d/%y")
+extra_meta$Site = extra_meta$Field.Site
+extra_meta$Replicate = paste0("P", extra_meta$Replicate)
+head(otus_long)
+
+intersect(otus_long$Site, extra_meta$Site)
+extra_meta$date_chr =as.character(extra_meta$datetime)
+intersect(unique(otus_long$date_chr), extra_meta$date_chr)
+extra_meta = extra_meta[c('Replicate', 'OD750', 'Site', 'date_chr')]
+
+otus_long_new = left_join(otus_long, extra_meta )
+
+```
+## plot relative abundance vs temp and taxa - NMSU
+```{r pressure, echo=FALSE}
+#otus_long
+
+otus_long_grp = otus_long_new %>% group_by(Site, Pond, datetime) %>% mutate(tot_abund = sum(Abundance)) %>%
+  group_by(Site, Pond, datetime, Phylum, Mean_Air_Temp, Prod_over_time, shannon, richness, OD750) %>%
+  summarise(relabund = sum(Abundance) / unique(tot_abund), .groups = "drop")
+
+top_15 <- otus_long_grp %>%
+  group_by(Phylum) %>%
+  summarise(total_abundance = sum(relabund, na.rm = TRUE)) %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 10) %>%
+  pull(Phylum)
+
+otus_long_grp$phylum = 'Other'
+otus_long_grp$phylum[otus_long_grp$Phylum %in% top_15] = otus_long_grp$Phylum[otus_long_grp$Phylum %in% top_15]
+otus_long_grp$phylum[otus_long_grp$Phylum=='__'] ='Other'
+
+
+# First, calculate the scaling factor
+max_abund <- max(otus_long_grp$relabund, na.rm = TRUE)
+max_prod <- max(otus_long_grp$Prod_over_time[otus_long_grp$Site == 'NMSU'], na.rm = TRUE)
+max_temp <- max(otus_long_grp$Mean_Air_Temp, na.rm = TRUE)
+max_shan <- max(otus_long_grp$shannon, na.rm = TRUE)
+
+
+scale_factor_prod <- max_prod * 1.1
+#scale_factor_temp <- max_abund / max_temp
+#scale_factor_shan <- max_shan / max_prod
+
+# Plot
+nmsu_plots1 = otus_long_grp %>%
+  filter(Site == 'NMSU') %>% filter(Pond != 'UCSD-P4') %>%
+  ggplot(aes(x = as.character(datetime), y = relabund, fill = phylum)) +
+  geom_bar(stat = "identity", position = "stack") +
+
+  # Algal productivity line (solid black)
+  geom_line(aes(y = Prod_over_time / scale_factor_prod, 
+                group = 1), 
+            color = "black", size = 0.5) +
+
+  # Mean air temp line (dashed black)
+ # geom_line(aes(y = Mean_Air_Temp * scale_factor_temp, 
+#                linetype = "Mean Air Temp", group = 1), 
+#            color = "black", size =0.5) +
+
+  scale_y_continuous(
+    name = "Relative Abundance",
+    sec.axis = sec_axis(~ . * scale_factor_prod, name = "Algal Productivity (g/m^2/day)")
+  ) +
+
+  # Manual linetypes for legend
+#  scale_linetype_manual(
+#    name = "Environmental Variables",
+ #   values = c("Algal Productivity" = "solid", "Mean Air Temp" = "dashed")
+#  ) +
+
+  theme_minimal() +
+  theme(
+    #axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_blank(),
+    legend.position = "right",
+    axis.title.x = element_text(size=14),
+    axis.title.y = element_text(size=14),
+    strip.text = element_blank(),
+    panel.spacing.y=unit(.05, "lines")
+    #element_text(size = 10)
+  ) +
+   # scale_x_date(date_labels="%b-%y",date_breaks  ="3 month")+
+
+  facet_wrap(.~Pond, scales='free',ncol=1) +
+  labs(fill = "Phylum", x = "Date")
+
+#pdf('/Users/margaretdemmel/Desktop/Github/Algae_EDM/plots/nmsu_time_plots.pdf', width = 9, height=11)
+nmsu_plots1
+#dev.off()
+
+nmsu_temp = otus_long_grp %>%
+  filter(Site == 'NMSU')  %>%
+  ggplot(aes(x = as.character(datetime), y = Mean_Air_Temp)) +
+    geom_line(aes(group=1)) + geom_point() + ylab("Mean Air Temperature (˚C)") +
+  theme_classic() +
+    ylim(2, 33) +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(size=14)) 
+
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/nmsu_temp.pdf", height = 3, width = 10)
+nmsu_temp
+dev.off()
+
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/nmsu_mbs.pdf", height = 9, width = 10)
+nmsu_plots1
+dev.off()
+
+ggarrange(nmsu_temp, nmsu_plots1 + theme(legend.position='none'), nrow=2, heights = 0.15, 0.85)
+```
+
+## plot relative abundance vs temp and taxa - UCSD
+```{r pressure, echo=FALSE}
+#otus_long
+
+otus_long_grp = otus_long_new %>% group_by(Site, Pond, datetime) %>% mutate(tot_abund = sum(Abundance)) %>%
+  group_by(Site, Pond, datetime, Phylum, Mean_Air_Temp, Prod_over_time, shannon, richness, OD750) %>%
+  summarise(relabund = sum(Abundance) / unique(tot_abund), .groups = "drop")
+
+top_15 <- otus_long_grp %>%
+  group_by(Phylum) %>%
+  summarise(total_abundance = sum(relabund, na.rm = TRUE)) %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 10) %>%
+  pull(Phylum)
+
+otus_long_grp$phylum = 'Other'
+otus_long_grp$phylum[otus_long_grp$Phylum %in% top_15] = otus_long_grp$Phylum[otus_long_grp$Phylum %in% top_15]
+otus_long_grp$phylum[otus_long_grp$Phylum=='__'] ='Other'
+
+
+# First, calculate the scaling factor
+max_abund <- max(otus_long_grp$relabund, na.rm = TRUE)
+max_prod <- max(otus_long_grp$Prod_over_time[otus_long_grp$Site == 'UCSD'], na.rm = TRUE)
+max_temp <- max(otus_long_grp$Mean_Air_Temp, na.rm = TRUE)
+max_shan <- max(otus_long_grp$shannon, na.rm = TRUE)
+
+
+scale_factor_prod <- max_prod *1.1
+#scale_factor_temp <- max_abund / max_temp
+#scale_factor_shan <- max_shan / max_prod
+
+# Plot
+ucsd_plots1 = otus_long_grp %>%
+  filter(Site == 'UCSD') %>% filter(Pond != 'UCSD-P4') %>%
+  ggplot(aes(x = as.character(datetime), y = relabund, fill = phylum)) +
+  geom_bar(stat = "identity", position = "stack") +
+
+  # Algal productivity line (solid black)
+  geom_line(aes(y = Prod_over_time / scale_factor_prod, 
+                group = 1), 
+            color = "black", size = 0.5) +
+
+  # Mean air temp line (dashed black)
+ # geom_line(aes(y = Mean_Air_Temp * scale_factor_temp, 
+#                linetype = "Mean Air Temp", group = 1), 
+#            color = "black", size =0.5) +
+
+  scale_y_continuous(
+    name = "Relative Abundance",
+    sec.axis = sec_axis(~ . * scale_factor_prod , name = "Algal Productivity (g/m^2/day)")
+  ) +
+
+  # Manual linetypes for legend
+#  scale_linetype_manual(
+#    name = "Environmental Variables",
+ #   values = c("Algal Productivity" = "solid", "Mean Air Temp" = "dashed")
+#  ) +
+
+  theme_minimal() +
+  theme(
+    #axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_blank(),
+    legend.position = "right",
+    axis.title.x = element_text(size=14),
+    axis.title.y = element_text(size=14),
+   # strip.text = element_text(size = 10)
+       strip.text = element_blank(),
+    panel.spacing.y=unit(.05, "lines")
+  ) +
+   # scale_x_date(date_labels="%b-%y",date_breaks  ="3 month")+
+
+  facet_wrap(.~Pond, scales='free',ncol=1) +
+  labs(fill = "Phylum", x = "Date")
+
+#pdf('/Users/margaretdemmel/Desktop/Github/Algae_EDM/plots/nmsu_time_plots.pdf', width = 9, height=11)
+ucsd_plots1
+#dev.off()
+
+ucsd_temp = otus_long_grp %>%
+  filter(Site == 'UCSD')  %>%
+  ggplot(aes(x = as.character(datetime), y = Mean_Air_Temp)) +
+    geom_line(aes(group=1)) + geom_point() + ylab("Mean Air Temperature (˚C)") +
+  ylim(2, 33) +
+  theme_classic() +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(size=14),
+        )  
+
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/ucsd_temp.pdf", height = 3, width = 10)
+ucsd_temp
+dev.off()
+
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/ucsd_mbs.pdf", height = 9, width = 10)
+ucsd_plots1
+dev.off()
+```
+
+# get relevant dates to save from pythons
+```{r}
+# temp
+temp = all_dat_init %>% filter(Pond == 'UCSD-P1')
+temp$num = 1:nrow(temp)
+
+temp %>% filter(Date=="2021/07/26") %>% select(num) # 41
+
+temp %>% filter(month(datetime) == 12)
+temp %>% filter(Date=="2021/12/20") %>% select(num) # 62
+temp %>% filter(Date=="2022/12/14") %>% select(num) # 108
+
+
+```
+
+
+
+# create causal network
+```{r}
+library(igraph)
+pond_id = 'UCSD-P1'
+
+g1 <- read_graph("~/Documents/GitHub/Algae_EDM/data/UCSD-P1_time_network_July21.graphml", format = "graphml")
+V(g1)$name <- V(g1)$id
+
+g2<- read_graph("~/Documents/GitHub/Algae_EDM/data/UCSD-P1_time_network_Dec21.graphml", format = "graphml")
+V(g2)$name <- V(g2)$id
+
+layout <- layout_with_fr(g1, weights = NA)  # ignore weights
+```
+
+# now graphs
+```{r}
+g = g2
+
+#setequal(V(g1)$name, V(g2)$name)
+
+info = read_csv("~/Documents/GitHub/Algae_EDM/data/UCSD-P1_node_info.csv")
+
+info = info %>% group_by(`target (driver)`, Phylum, Class) %>% summarise()
+
+# color edges
+w <- E(g)$weight
+edge_col_base <- ifelse(w > 0, "blue", "red")
+
+# edge transparency
+library(scales)  # for rescale()
+alpha_vals <- rescale(abs(w), to = c(0.2, 1))  # adjust range if needed
+E(g)$color <- mapply(
+  function(col, a) adjustcolor(col, alpha.f = a),
+  edge_col_base,
+  alpha_vals
+)
+
+# de crease arrow size
+arrow_size <- 0.3   # smaller than default (1)
+
+
+# color nodes based on phylum
+# Make sure names exist
+stopifnot(!is.null(V(g)$name))
+
+# Match order of vertices to info rows
+idx <- match(V(g)$name, info$`target (driver)`)
+V(g)$group <- info$Phylum[idx]
+
+V(g)$group[is.na(V(g)$group)] = 'Algae'
+V(g)$name[V(g)$name=='Prod_over_time'] = "Algal Productivity"
+
+groups <- unique(na.omit(V(g)$group))
+palette <- c('#0077b6', '#fff3b0', '#e09f3e', '#9e2a2b', '#9370dc','#6a994e')
+names(palette) =c("p__Proteobacteria",    "p__Bacteroidota","p__Verrucomicrobiota", "p__Bdellovibrionota",  "p__Cyanobacteria","Algae")
+
+V(g)$color <- palette[V(g)$group]
+
+E(g)$width <- rescale(abs(w), to = c(0.5, 3))
+
+# get outdegree
+out_deg <- degree(g, mode = "out")
+V(g)$size <- rescale(out_deg, to = c(5, 15))
+
+
+# plot all
+
+
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/Dec22.pdf", height=9, width=8)
+plot(
+  g,
+  layout=layout,
+  vertex.color = V(g)$color,
+  vertex.size = V(g)$size*1.2,
+  vertex.label = V(g)$name,            # usually better for large networks
+  vertex.label.color='black',
+  edge.color = E(g)$color,
+  edge.arrow.size = 0.3,
+  #edge.width = 2
+)
+
+dev.off()
+
+#degree(g1, mode='out')==degree(g2, mode = "out")
+```
+# add legend
+```{r}
+pdf("~/Desktop/PhD/GRC_mb_editing_conference2026/legend1.pdf")
+plot.new()
+
+legend(
+  x = "topright",                  # or "topleft", "bottomleft", etc.
+  legend = groups,
+  col = palette,
+  pch = 21,                         # filled circle
+  pt.bg = palette,                    # fill color
+  pt.cex = 2,                        # point size
+  bty = "n",                         # no box around legend
+  title = "Phylum"
+)
+legend(
+  x = "bottomleft",
+  legend = c("Positive", "Negative"),
+  col = c("blue", "red"),
+  lty = 1,          # solid lines
+  lwd = 2,          # line width
+  bty = "n",
+  title = "Interaction"
+)
+dev.off()
+
+
+```
+
+
+# network dynamics over time
+```{r}
+all_graphs_by_time = read.csv("/Users/margaretdemmel/Desktop/PhD/Algae_16S/all_graphs_by_time_06.25.csv")
+all_graphs_by_time$fam_richness = rowSums(all_graphs_by_time[,14:644] > 0 ,na.rm=T)
+```
+

@@ -1,0 +1,684 @@
+---
+title: "algae_EDM_12.25"
+output: html_document
+date: "2025-12-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+setwd("~/Desktop/PhD/Algae_16S/")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+# Load necessary libraries
+library(tidyverse)
+library(phyloseq)
+
+# Read data
+meta <- read.csv("~/Desktop/PhD/Algae_16S/Metadata.csv")
+otus <- read.csv("~/Desktop/PhD/Algae_16S/OTU_abundance.csv")
+taxa <- read.csv("~/Desktop/PhD/Algae_16S/OTU_Taxonomy.csv")
+
+# Set OTU as rownames
+rownames(otus) <- otus$OTU
+otus$OTU <- NULL
+
+rownames(meta) = colnames(otus)
+rownames(taxa) = rownames(otus)
+tax = as.matrix(taxa)
+tax = tax[,-1]
+
+# create ps
+ps = phyloseq(otu_table(otus, taxa_are_rows = T), tax_table(tax), sample_data(meta))
+
+div = phyloseq::estimate_richness(ps, measures = c("Observed", "Shannon"))
+
+# Transpose and convert to relative abundances
+otus_t <- as.data.frame(t(otus))
+otus_t <- otus_t / rowSums(otus_t)
+
+#rowSums(otus_t)
+
+# Add sample IDs as column
+otus_t$Sample <- rownames(otus_t)
+otus_t$Sample = substring(otus_t$Sample, 2)
+otus_t$Sample = gsub("\\.", "-", otus_t$Sample)
+
+#intersect(otus_t$Sample, meta$Sample)
+
+# Merge with metadata
+all_dat_init <- merge(meta, otus_t, by = "Sample", all = TRUE)
+
+# add diversity info
+all_dat_init$richness = div$Observed
+all_dat_init$shannon = div$Shannon
+
+all_dat_init$datetime = as.Date(all_dat_init$Date)
+
+all_dat_init <- all_dat_init %>%
+  group_by(Pond) %>%
+  arrange(datetime, .by_group = TRUE) %>%
+  mutate(time = row_number() - 1) %>%
+  ungroup()
+
+all_dat_init$date_chr = as.character(all_dat_init$datetime)
+
+
+# Merge OTU taxonomy (assumes taxa has columns OTU and Phylum)
+otus_long <- all_dat_init %>%
+  pivot_longer(cols = starts_with("OTU"), names_to = "OTU", values_to = "Abundance") %>%
+  left_join(taxa, by = "OTU")
+```
+
+# add extra metadata
+```{r}
+extra_meta = read.csv("~/Desktop/PhD/Algae_16S/data-3186929-supplementary.csv")
+colnames(extra_meta)
+extra_meta = extra_meta[c('Date', 'Field.Site', 'Replicate', 'OD750')]
+extra_meta$datetime = as.Date(extra_meta$Date, "%m/%d/%y")
+extra_meta$Site = extra_meta$Field.Site
+extra_meta$Replicate = paste0("P", extra_meta$Replicate)
+head(otus_long)
+
+intersect(otus_long$Site, extra_meta$Site)
+extra_meta$date_chr =as.character(extra_meta$datetime)
+intersect(unique(otus_long$date_chr), extra_meta$date_chr)
+extra_meta = extra_meta[c('Replicate', 'OD750', 'Site', 'date_chr')]
+
+otus_long_new = left_join(otus_long, extra_meta )
+
+```
+
+
+
+## plot relative abundance vs temp and taxa
+```{r pressure, echo=FALSE}
+#otus_long
+
+otus_long_grp = otus_long_new %>% group_by(Site, Pond, datetime) %>% mutate(tot_abund = sum(Abundance)) %>%
+  group_by(Site, Pond, datetime, Phylum, Mean_Air_Temp, Prod_over_time, shannon, richness, OD750) %>%
+  summarise(relabund = sum(Abundance) / unique(tot_abund), .groups = "drop")
+
+top_15 <- otus_long_grp %>%
+  group_by(Phylum) %>%
+  summarise(total_abundance = sum(relabund, na.rm = TRUE)) %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 15) %>%
+  pull(Phylum)
+
+otus_long_grp$phylum = 'Other'
+otus_long_grp$phylum[otus_long_grp$Phylum %in% top_15] = otus_long_grp$Phylum[otus_long_grp$Phylum %in% top_15]
+otus_long_grp$phylum[otus_long_grp$Phylum=='__'] ='Other'
+
+
+# First, calculate the scaling factor
+max_abund <- max(otus_long_grp$relabund, na.rm = TRUE)
+max_prod <- max(otus_long_grp$Prod_over_time, na.rm = TRUE)
+max_temp <- max(otus_long_grp$Mean_Air_Temp, na.rm = TRUE)
+max_shan <- max(otus_long_grp$shannon, na.rm = TRUE)
+
+
+scale_factor_prod <- max_abund / max_prod
+scale_factor_temp <- max_abund / max_temp
+scale_factor_shan <- max_shan / max_prod
+
+# Plot
+ucsd_plots = otus_long_grp %>%
+  filter(Site == 'NMSU') %>% filter(Pond != 'UCSD-P4') %>%
+  ggplot(aes(x = as.character(datetime), y = relabund, fill = phylum)) +
+  geom_bar(stat = "identity", position = "stack") +
+
+  # Algal productivity line (solid black)
+  geom_line(aes(y = Prod_over_time * scale_factor_prod, 
+                linetype = "Algal Productivity", group = 1), 
+            color = "black", size = 0.5) +
+
+  # Mean air temp line (dashed black)
+  geom_line(aes(y = Mean_Air_Temp * scale_factor_temp, 
+                linetype = "Mean Air Temp", group = 1), 
+            color = "black", size =0.5) +
+
+  scale_y_continuous(
+    name = "Relative Abundance",
+    sec.axis = sec_axis(~ . / scale_factor_prod, name = "Environmental Variables")
+  ) +
+
+  # Manual linetypes for legend
+  scale_linetype_manual(
+    name = "Environmental Variables",
+    values = c("Algal Productivity" = "solid", "Mean Air Temp" = "dashed")
+  ) +
+
+  theme_minimal() +
+  theme(
+    #axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_blank(),
+    legend.position = "right",
+    axis.title.x = element_text(size=14),
+    axis.title.y = element_text(size=14),
+    strip.text = element_text(size = 14)
+  ) +
+  facet_wrap(.~Pond, scales='free',ncol=1) +
+  labs(fill = "Phylum", x = "Date")
+
+#pdf('/Users/margaretdemmel/Desktop/Github/Algae_EDM/plots/nmsu_time_plots.pdf', width = 9, height=11)
+ucsd_plots
+#dev.off()
+```
+
+
+# plot relative abundance vs diversity
+```{r}
+#otus_long
+otus_long_grp = otus_long %>% group_by(Site, Pond, datetime) %>% mutate(tot_abund = sum(Abundance)) %>%
+  group_by(Site, Pond, datetime, Phylum, Mean_Air_Temp, Prod_over_time, shannon, richness) %>%
+  summarise(relabund = sum(Abundance) / unique(tot_abund), .groups = "drop")
+
+top_15 <- otus_long_grp %>%
+  group_by(Phylum) %>%
+  summarise(total_abundance = sum(relabund, na.rm = TRUE)) %>%
+  arrange(desc(total_abundance)) %>%
+  slice_head(n = 15) %>%
+  pull(Phylum)
+
+otus_long_grp$phylum = 'Other'
+otus_long_grp$phylum[otus_long_grp$Phylum %in% top_15] = otus_long_grp$Phylum[otus_long_grp$Phylum %in% top_15]
+otus_long_grp$phylum[otus_long_grp$Phylum=='__'] ='Other'
+
+
+# First, calculate the scaling factor
+max_abund <- max(otus_long_grp$relabund, na.rm = TRUE)
+max_prod <- max(otus_long_grp$Prod_over_time, na.rm = TRUE)
+max_temp <- max(otus_long_grp$Mean_Air_Temp, na.rm = TRUE)
+max_shan <- max(otus_long_grp$shannon, na.rm = TRUE)
+max_richness <- max(otus_long_grp$richness, na.rm = TRUE)
+
+
+scale_factor_prod <- max_abund / max_prod
+scale_factor_temp <- max_abund / max_temp
+scale_factor_shan <- max_abund / max_shan
+scale_factor_rich <- max_abund / max_richness
+
+
+hist(otus_long_grp$shannon * scale_factor_shan)
+hist(otus_long_grp$scale_factor_prod * scale_factor_prod)
+
+
+ucsd_plots = otus_long_grp %>%
+  filter(Site == 'UCSD') %>% filter(Pond != 'UCSD-P4') %>%
+  ggplot(aes(x = as.character(datetime), y = relabund, fill = phylum)) +
+  geom_bar(stat = "identity", position = "stack") +
+
+  # Algal productivity line (solid black)
+  geom_line(aes(y = Prod_over_time * scale_factor_prod, 
+                linetype = "Algal Productivity",
+                color = "Algal Productivity",
+                group = 1),
+            size = 0.5) +
+
+  # Shannon diversity line (dashed black)
+  geom_line(aes(y = shannon * scale_factor_shan, 
+                linetype = "Shannon Diversity",
+                color = "Shannon Diversity",
+                group = 1),
+            size = 0.5) +
+  
+
+  # Shannon diversity line (dashed black)
+  geom_line(aes(y = Mean_Air_Temp * scale_factor_temp, 
+                linetype = "Mean Air Temp",
+                color = "Mean Air Temp",
+                group = 1),
+            size = 0.5) +
+
+  scale_y_continuous(
+    name = "Relative Abundance",
+    sec.axis = sec_axis(~ . / scale_factor_shan, name = "Environmental Variables")
+  ) +
+
+  # Manual linetypes and colors
+  scale_linetype_manual(
+    name = "Environmental Variables",
+    values = c("Algal Productivity" = "solid", "Shannon Diversity" = "dashed", "Mean Air Temp" = 'dotted')
+  ) +
+  scale_color_manual(
+    name = "Environmental Variables",
+    values = c("Algal Productivity" = "black", "Shannon Diversity" = "black", "Mean Air Temp" = 'black')
+  ) +
+
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    legend.position = "right",
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    strip.text = element_text(size = 14)
+  ) +
+  facet_wrap(.~Pond, scales = 'free', ncol = 1) +
+  labs(fill = "Phylum", x = "Date")
+
+
+#pdf('/Users/margaretdemmel/Desktop/Github/Algae_EDM/plots/nmsu_time_plots.pdf', width = 9, height=11)
+ucsd_plots
+#dev.off()
+```
+
+# plot just  diversity
+```{r}
+
+max_richness <- max(otus_long_grp$richness, na.rm = TRUE)
+scale_factor_rich <- max(otus_long_grp$shannon) / max_richness
+
+
+ucsd_plots = otus_long_grp %>%
+  filter(Site == 'Cyanotech', Pond != 'UCSD-P4') %>%
+  group_by(datetime, Pond, Site) %>%
+  summarise(mean_shannon = mean(shannon, na.rm = TRUE), mean_richness = mean(richness, na.rm=TRUE)) %>%
+  ggplot(aes(x = as.character(datetime), y = mean_shannon)) +
+  geom_col(fill = "steelblue") +
+  labs(x = "Date", y = "Mean Shannon Diversity") +
+
+  # Algal productivity line (solid black)
+  geom_line(aes(y = mean_richness * scale_factor_rich, 
+                linetype = "Richness",
+                color = "Richness",
+                group = 1),
+            size = 0.5) +
+
+  scale_y_continuous(
+    name = "Shannon Diversity",
+    sec.axis = sec_axis(~ . / scale_factor_rich, name = "Richness")
+  ) +
+
+  # Manual linetypes and colors
+  scale_linetype_manual(
+    name = "Richness",
+    values = c("Richness" = "solid")
+  ) +
+  scale_color_manual(
+    name = "Richness",
+    values = c("Richness" = "red")
+  ) +
+
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    legend.position = "right",
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    strip.text = element_text(size = 14)
+  ) +
+  facet_wrap(.~Pond, scales = 'free', ncol = 1) +
+  labs( x = "Date")
+
+
+pdf('/Users/margaretdemmel/Desktop/Github/Algae_EDM/plots/cyano_diversity_plots.pdf', width = 9, height=11)
+ucsd_plots
+dev.off()
+```
+# get diversity with numbers
+```{r}
+ponds = c("UCSD-P1","UCSD-P2","UCSD-P3","NMSU-P1","NMSU-P2","NMSU-P3","Cyanotech-P1","Cyanotech-P2","Cyanotech-P3","Cyanotech-P4")
+ponds
+
+ps_sub = prune_sample(sample_data(ps))
+```
+
+
+
+# do correlations for all variables, all ponds
+```{r}
+all_graphs_by_time = read.csv("/Users/margaretdemmel/Desktop/PhD/Algae_16S/all_graphs_by_time_06.25.csv")
+all_graphs_by_time$fam_richness = rowSums(all_graphs_by_time[,14:644] > 0 ,na.rm=T)
+```
+
+# join by productivity and air temp (temporary solution- FIX THIS)
+```{r}
+temp_meta = data.frame(sample_data(ps)) %>% select(Pond, Bleach_Dose, Mean_Air_Temp, Prod_over_time)
+temp_meta = cbind(temp_meta, div)
+
+temp_meta2 = otus_long_new %>% group_by(Sample, OD750) %>% summarise()
+
+temp_meta$Sample = gsub("^X", "", rownames(temp_meta))
+temp_meta$Sample = gsub("\\.", "-", temp_meta$Sample)
+temp_meta <- left_join(temp_meta, temp_meta2)
+
+
+
+colnames(all_graphs_by_time)
+
+intersect(colnames(all_graphs_by_time), colnames(temp_meta))
+
+all_graphs_new = left_join(all_graphs_by_time, temp_meta, by = c('pond_id'="Pond", 'Bleach_Dose'='Bleach_Dose', 'Mean_Air_Temp'='Mean_Air_Temp', 'Prod_over_time'='Prod_over_time'))
+
+colnames(all_graphs_new)
+tail(all_graphs_new[,649:655,])
+
+
+```
+
+
+```{r}
+colnames(all_graphs_new)[!grepl("__", colnames(all_graphs_new))]
+
+```
+
+
+# look at all possible correlations
+```{r}
+cols = c('connectance', 'modularity', 'pos_neg_ratio', 'mean_interaction_strength', 'mean_interaction_strength_abs',
+         'mean_weighted_degree', 'mean_betweenness', 'reciprocity', 'Bleach_Dose', 
+         'Mean_Air_Temp', 'Prod_over_time', 'OD750', 'Observed', 'Shannon', 'fam_richness')
+
+
+combos = (combn(cols, 2, simplify = FALSE))
+
+df = data.frame(Var1 = character(0), Var2=character(0), p_val = numeric(0), cor = numeric(0), pond = character(0))
+
+
+#all_graphs_new[,c(1:10, 640:648)]
+
+
+for(pond in ponds){
+  print(pond)
+  all_graphs_new_sub = all_graphs_new[all_graphs_new$pond_id == pond,]
+  #print(head(all_graphs_new_sub[,c(1:10, 640:648)]))
+  for(c in combos) {
+    c1 = c[1]; c2 = c[2]
+    cor = cor.test((all_graphs_new_sub[[c1]]), all_graphs_new_sub[[c2]], use = "complete.obs", method = "pearson")
+    df = rbind(df, data.frame(Var1=c1, Var2=c2,    p_val= cor$p.value,  cor=   cor$estimate, pond=pond))
+  }  
+}
+
+df$Var1 = factor(df$Var1, levels = cols)
+df$Var2 = factor(df$Var2, levels = cols)
+
+df$site = gsub("-.*", "", df$pond)
+
+
+pdf("plots_4.25/heatmap_corrs_Cyano.pdf", height = 4, width=11)
+ggplot(df %>% filter(site == 'Cyanotech'), aes(x = Var1, y = Var2)) + geom_tile(aes( fill = cor)) + facet_grid(.~pond) +
+  scale_fill_gradient2(
+    low = "red",     # for negative values
+    mid = "white",   # for zero
+    high = "blue",   # for positive values
+    midpoint = 0     # center the scale at 0
+  ) +
+  geom_point(data = df %>% filter(site == 'Cyanotech') %>% filter(p_val < 0.05), aes(x = Var1, y = Var2)) +
+  theme_bw() +
+theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 14),
+      axis.text.y = element_text(size=18))
+dev.off()
+```
+
+# checking
+```{r}
+all_graphs_new$site = gsub("-.*", "", all_graphs_new$pond)
+
+all_graphs_new %>% filter(site == 'Cyanotech') %>% ggplot(aes(x = Shannon, y = Observed, color = Mean_Air_Temp)) + geom_point() + facet_wrap(.~pond)
+```
+
+
+```{r}
+otus_long_fam = otus_long %>% group_by(time, Site, Pond, Phylum, Class, Order, Family, Prod_over_time, Mean_Air_Temp) %>% summarise(mean_abund = mean(Abundance), mean_prod = mean(Prod_over_time), mean_temp = mean(Mean_Air_Temp))
+```
+
+
+
+
+```{r}
+otus_long_fam = otus_long %>% group_by(time, Site, Pond, Phylum, Class, Order, Family, Prod_over_time, Mean_Air_Temp) %>% summarise(mean_abund = mean(Abundance), mean_prod = mean(Prod_over_time), mean_temp = mean(Mean_Air_Temp))
+
+```
+
+
+```{r}
+ponds = c('UCSD-P1', 'UCSD-P2', 'UCSD-P3', 'NMSU-P1', 'NMSU-P2', 'NMSU-P3')
+
+all_nodes <- list()  # Initialize empty list
+
+for( p in ponds) {
+  print(p)
+  nodes = read.csv(paste0("~/Desktop/PhD/Algae_16S/",p, "_node_properties_by_time.csv"))
+  nodes$pond = p
+  all_nodes[[p]] <- nodes  # Store in list
+
+}
+
+combined_nodes <- bind_rows(all_nodes)
+
+```
+
+```{r}
+
+combined_nodes = left_join(combined_nodes, otus_long_fam, by = c('node'='Family', 'time'='time', 'pond'='Pond'))
+
+phy = (combined_nodes %>% filter(pond == 'UCSD-P1') %>% group_by(node, Phylum) %>% filter(!is.na(Phylum)) %>%
+         summarise() %>%
+  group_by(Phylum) %>% summarise(n = n()) %>% filter(n > 1))$Phylum
+
+#combined_nodes %>% filter(pond == 'UCSD-P1') %>% #filter(Phylum %in% phy) %>%
+#  groups(
+```
+
+
+```{r}
+shift_vec <- function(x, k) {
+  # k > 0 shifts x forward (x_t → x_{t+k})
+  # k < 0 shifts x backward
+  if (k > 0) {
+    return(c(rep(NA, k), x[1:(length(x) - k)]))
+  } else if (k < 0) {
+    k <- abs(k)
+    return(c(x[(k + 1):length(x)], rep(NA, k)))
+  } else {
+    return(x)
+  }
+}
+```
+
+
+```{r}
+unique(combined_nodes$pond)
+
+ all_results <- list()   # accumulator list
+
+subset$Prod_over_time
+
+for(p in unique(all_graphs_new$pond)){  
+  
+  subset <- all_graphs_new %>% filter(pond == p)  # compare to loop variable 'p'
+
+vars = c("fam_richness", "connectance", "mean_interaction_strength_abs", "pos_neg_ratio", 'Shannon', 'Mean_Air_Temp', 'Prod_over_time')   # example
+
+
+# All pairwise combos
+pairs <- t(combn(vars, 2))   # matrix with two columns
+
+results_list <- apply(pairs, 1, function(pr) {
+  v1 <- pr[1]
+  v2 <- pr[2]
+
+  # compute correlations across lags
+  cors <- sapply(lags, function(k) {
+    shifted <- shift_vec(subset[[v2]], k)
+    cor(subset[[v1]], shifted, use = "complete.obs")
+  })
+
+  # find best lag
+  best_lag <- lags[which.max(abs(cors))]
+  best_cor <- cors[which.max(abs(cors))]
+
+  # return row
+  data.frame(
+    var1 = v1,
+    var2 = v2,
+    best_lag = best_lag,
+    best_cor = best_cor
+  )
+})
+
+results_df <- do.call(rbind, results_list)
+
+results_df$pond = p
+
+  all_results[[p]] <- results_df
+
+}
+
+# Combine everything into one long dataframe
+final_results <- dplyr::bind_rows(all_results)
+
+# Create a combined label for var1 vs var2
+final_results <- final_results %>%
+  mutate(pair = paste(var1, var2, sep = " vs "))
+
+# Plot
+final_results <- final_results %>%
+  mutate(site = substr(pond, 1, 4))
+
+final_results %>% filter(site != 'Cyan') %>%
+ggplot(aes(x = pair, y = abs(best_lag), color = best_cor, shape = site)) +
+  geom_point(size = 4) +
+  scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  labs(
+    x = "Variable Pair",
+    y = "Best Lag",
+    color = "Best Correlation",
+    shape = "Pond",
+    title = "Best-lag correlations across ponds"
+  )
+```
+    
+```{r}
+# compute average absolute lag per pair
+pair_order <- final_results %>%
+  filter(site != 'Cyan') %>%
+  group_by(pair) %>%
+  summarise(mean_abs_lag = mean(abs(best_lag), na.rm = TRUE)) %>%
+  arrange(desc(mean_abs_lag)) %>%
+  pull(pair)  # get the ordered pair names
+
+# turn pair into factor with that order
+final_results <- final_results %>%
+  mutate(pair = factor(pair, levels = pair_order))
+
+# plot
+final_results %>% 
+  filter(site != 'Cyan') %>%
+  ggplot(aes(x = pair, y = abs(best_lag), color = best_cor, shape = site)) +
+  geom_point(size = 4) +
+  scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size=12)
+  ) +
+  labs(
+    x = "Variable Pair",
+    y = "Absolute Best Lag",
+    color = "Best Correlation",
+    shape = "Site",
+    title = "Best-lag correlations across ponds"
+  )
+```
+    
+    
+    
+    
+    
+```{r}
+# Custom shift function
+shift_vec <- function(x, k) {
+  if (k > 0) c(rep(NA, k), x[1:(length(x) - k)])
+  else if (k < 0) { k <- abs(k); c(x[(k+1):length(x)], rep(NA, k)) }
+  else x
+}
+
+# Variables to test
+vars = c("fam_richness", "connectance", "mean_interaction_strength_abs", "pos_neg_ratio", 'Shannon', 'Mean_Air_Temp')   # example
+
+# Lags to examine
+lags <- -10:10
+
+# All unique pairs
+pairs <- t(combn(vars, 2))
+
+# Compute long-format correlation dataframe
+long_results <- do.call(
+  rbind,
+  apply(pairs, 1, function(pr) {
+    v1 <- pr[1]
+    v2 <- pr[2]
+
+    cors <- sapply(lags, function(k) {
+      shifted <- shift_vec(subset[[v2]], k)
+      cor(subset[[v1]], shifted, use = "complete.obs")
+    })
+
+    data.frame(
+      var1 = v1,
+      var2 = v2,
+      lag = lags,
+      correlation = cors
+    )
+  })
+)
+
+
+plots <- lapply(split(long_results, interaction(long_results$var1, long_results$var2)), function(df) {
+  ggplot(df, aes(x = lag, y = correlation)) +
+    geom_line() +
+    geom_point() +
+    geom_vline(xintercept = df$lag[which.max(abs(df$correlation))], 
+               linetype = "dashed", alpha = 0.7) +
+    theme_minimal() +
+    labs(title = paste(df$var1[1], "vs", df$var2[1]),
+         x = "Lag (timesteps)",
+         y = "Correlation")
+})
+```
+
+    
+    
+# test which taxa consistently are the best predictors of algal productivity    
+```{r}
+df_all = read.csv("../data/productivity_over_time_data_12.25.csv")
+head(df_all)
+
+df_unique <- df_all[!duplicated(df_all), ]
+
+
+df_unique %>% group_by(pond_id) %>% mutate(strongest = max(ccm_rho)) %>% filter(ccm_rho == strongest)
+
+# mostly positive drivers
+df_unique %>% filter(average_direction  0) %>%
+  group_by(pond_id) %>% mutate(strongest = max(ccm_rho)) %>% filter(ccm_rho == strongest)
+
+df_unique %>% filter(pct_time_negative < pct_time_positive) %>% 
+  group_by(pond_id) %>%
+  #arrange(desc(ccm_rho), .by_group = TRUE) %>%
+ # slice_head(n = 5) %>%
+  ungroup() %>% group_by(site, Phylum, Family) %>% #$summarise(n = n()) %>% arrange(n) %>% #
+summarize(m = mean(ccm_rho)) %>% arrange(m) %>% ggplot(aes(x = Phylum, y = m, color = site)) + geom_boxplot()
+
+a# mostly gammaproteobacteria
+```
+  
+    
