@@ -1,0 +1,1886 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="edge" attr.name="weight" attr.type="double" />
+  <graph edgedefault="directed">
+    <node id="f__Pseudoalteromonadaceae" />
+    <node id="f__Cryomorphaceae" />
+    <node id="f__Cyclobacteriaceae" />
+    <node id="f__Colwelliaceae" />
+    <node id="f__Marinomonadaceae" />
+    <node id="f__Alteromonadaceae" />
+    <node id="f__Vibrionaceae" />
+    <node id="f__Rhodobacteraceae" />
+    <node id="f__Pseudomonadaceae" />
+    <node id="f__Puniceicoccaceae" />
+    <node id="f__Alcanivoracaceae1" />
+    <node id="f__Halieaceae" />
+    <node id="f__Rubritaleaceae" />
+    <node id="f__Crocinitomicaceae" />
+    <node id="f__Halomonadaceae" />
+    <node id="f__Unknown_Family" />
+    <node id="f__Saccharospirillaceae" />
+    <node id="f__Stappiaceae" />
+    <node id="f__Pseudohongiellaceae" />
+    <node id="f__Saprospiraceae" />
+    <node id="f__Flavobacteriaceae" />
+    <node id="Prod_over_time" />
+    <node id="f__Oligoflexales" />
+    <node id="f__Hyphomonadaceae" />
+    <node id="f__Sneathiellaceae" />
+    <node id="f__Marinobacteraceae" />
+    <node id="f__Parvibaculaceae" />
+    <node id="f__Rhizobiaceae" />
+    <node id="f__Idiomarinaceae" />
+    <edge source="f__Pseudoalteromonadaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.3320004560967492</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.060537641006731646</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Colwelliaceae">
+      <data key="d0">0.906550577882625</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.15139915116504604</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.041393434700512544</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Vibrionaceae">
+      <data key="d0">0.013630528725858043</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.43853797728287935</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.12528377389942663</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.14709272771330806</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.17597985583733705</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Halieaceae">
+      <data key="d0">0.05170570003539976</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.03495757359289306</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Crocinitomicaceae">
+      <data key="d0">0.13755922486224414</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Halomonadaceae">
+      <data key="d0">0.07262254604053098</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Unknown_Family">
+      <data key="d0">0.17963356040151512</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.5853073449128391</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Stappiaceae">
+      <data key="d0">0.9147611183205051</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.18195384498669728</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="f__Saprospiraceae">
+      <data key="d0">0.6617829125497119</data>
+    </edge>
+    <edge source="f__Pseudoalteromonadaceae" target="Prod_over_time">
+      <data key="d0">0.018891928058525576</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.05478516055452941</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.0005575549612654163</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.08836867751657067</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.4792584871330444</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.10685450816277756</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.045979152403964565</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.1894490162780734</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Idiomarinaceae">
+      <data key="d0">0.08797363306812961</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.3626502703356606</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.3685757530868179</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">-0.338922973600584</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Halieaceae">
+      <data key="d0">1.0869015931088302</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.33877035816597917</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.2835832529736426</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.17737207110500336</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.21884733622155408</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.35740240609383467</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Stappiaceae">
+      <data key="d0">-1.0689574460339468</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.3345891425356813</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.5911016938093333</data>
+    </edge>
+    <edge source="f__Cryomorphaceae" target="Prod_over_time">
+      <data key="d0">-0.6366023688996005</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.015337575008672721</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Vibrionaceae">
+      <data key="d0">0.11404905504793791</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.4444277496900187</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.05827675201089605</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.10883017965790057</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.1468057216165115</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Colwelliaceae">
+      <data key="d0">0.10609038341017657</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.06042472767902404</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.1428678169618849</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.007237434402855181</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Oligoflexales">
+      <data key="d0">-1.0477516194257537</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.1053360851644688</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.542955136598653</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.05357998719562729</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.15976154098434914</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.18302924001342066</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.29261929810418363</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Stappiaceae">
+      <data key="d0">-0.7411889585397582</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.1439995561138654</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="f__Saprospiraceae">
+      <data key="d0">0.14788839807923737</data>
+    </edge>
+    <edge source="f__Cyclobacteriaceae" target="Prod_over_time">
+      <data key="d0">0.18523292051198112</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.2013919615675701</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.3269070436929671</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Vibrionaceae">
+      <data key="d0">0.5552040394923681</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.08891731373106557</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.21387039650774997</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.1975704554365332</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.17892910501382153</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.08892402485660093</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.111208001195023</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Oligoflexales">
+      <data key="d0">1.0526873631131195</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">-0.12626318592840863</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Halieaceae">
+      <data key="d0">0.06388052269909934</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.0757038408909471</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Crocinitomicaceae">
+      <data key="d0">0.05563091302450444</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.052419976331529276</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Unknown_Family">
+      <data key="d0">0.34293560081470803</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.4007127671598172</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.08387791274480239</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Stappiaceae">
+      <data key="d0">0.7168946968329928</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.20713321686289898</data>
+    </edge>
+    <edge source="f__Colwelliaceae" target="Prod_over_time">
+      <data key="d0">-0.07745580385011372</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.19746477338524934</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Vibrionaceae">
+      <data key="d0">0.0022184064979186707</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.1434335134085879</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.3715209204909152</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.019991308190556945</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.09209632642575283</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Colwelliaceae">
+      <data key="d0">1.1146478857628386</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.42496996737668824</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.13782985394223696</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Oligoflexales">
+      <data key="d0">1.5974569317505491</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.180482136635882</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Halieaceae">
+      <data key="d0">-0.2833704011824054</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.26760308246954956</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.06541982983444236</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Halomonadaceae">
+      <data key="d0">0.1804099824076696</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.09234250626907092</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Unknown_Family">
+      <data key="d0">1.0101840825543307</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.47888862968449997</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Stappiaceae">
+      <data key="d0">0.8323792430908324</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.2194815910409263</data>
+    </edge>
+    <edge source="f__Marinomonadaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.0837576948644635</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.07252565584404132</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.19452617953001275</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Vibrionaceae">
+      <data key="d0">0.21043782039895076</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.2774387360893616</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.013856631903404304</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.2122338702392153</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.45050510495618257</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.3944306762713369</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Oligoflexales">
+      <data key="d0">1.8839721945957733</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Rhizobiaceae">
+      <data key="d0">-0.09011787387360473</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.01450170258866276</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Halieaceae">
+      <data key="d0">-0.2537617511915772</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Hyphomonadaceae">
+      <data key="d0">0.06699247120745735</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.08943676908629622</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.03457504966385655</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.0040689333978687625</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.0693680831279323</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Unknown_Family">
+      <data key="d0">0.5779967356193358</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.18076700599327145</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.8274108711230865</data>
+    </edge>
+    <edge source="f__Alteromonadaceae" target="f__Stappiaceae">
+      <data key="d0">1.1845858613925044</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.0030948411876089987</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.5291403494223351</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.03164039469398098</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.224065845989748</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.1607849648442492</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Colwelliaceae">
+      <data key="d0">0.04248495847484679</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.46027701355943046</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Oligoflexales">
+      <data key="d0">1.9088392096805746</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.12464858565316578</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.2552359701552052</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Halieaceae">
+      <data key="d0">1.0144749701399103</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Hyphomonadaceae">
+      <data key="d0">0.22661604782866415</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.0972000403368314</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.0162667116218643</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Unknown_Family">
+      <data key="d0">0.5903507756183785</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.05819237939509178</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.23277105024883277</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Stappiaceae">
+      <data key="d0">1.3058371341596997</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.3208988604728303</data>
+    </edge>
+    <edge source="f__Vibrionaceae" target="Prod_over_time">
+      <data key="d0">0.1780353382199873</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.07162999838171709</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.01192474038385161</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Vibrionaceae">
+      <data key="d0">-0.39134112180186753</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.07074780789277496</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Marinomonadaceae">
+      <data key="d0">0.23243192018099096</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Colwelliaceae">
+      <data key="d0">0.23392228820875968</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.25443331400365965</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.08129876151066576</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.01683810600965069</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Rhizobiaceae">
+      <data key="d0">0.14317920254387326</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Alcanivoracaceae1">
+      <data key="d0">-0.06902175082769757</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Halieaceae">
+      <data key="d0">0.1415911798024313</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Hyphomonadaceae">
+      <data key="d0">0.10507929563612008</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Sneathiellaceae">
+      <data key="d0">0.07622424331329708</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.0771769550646957</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Crocinitomicaceae">
+      <data key="d0">0.16465411288421394</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Halomonadaceae">
+      <data key="d0">-0.04212251773513713</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.2739395311542002</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Unknown_Family">
+      <data key="d0">-0.824409366098008</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.21246397931735692</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Stappiaceae">
+      <data key="d0">-1.1125320780730734</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="f__Saprospiraceae">
+      <data key="d0">-0.4757763915353287</data>
+    </edge>
+    <edge source="f__Rhodobacteraceae" target="Prod_over_time">
+      <data key="d0">-0.148753559661349</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.05322431601711303</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Vibrionaceae">
+      <data key="d0">0.254426553715316</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.1372134782930493</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.2648937956162379</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.11448960065400024</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.007333228379213963</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Colwelliaceae">
+      <data key="d0">0.47577646568185533</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.39319618587708605</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.03355249983522882</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Oligoflexales">
+      <data key="d0">1.6629897981400212</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Rhizobiaceae">
+      <data key="d0">-0.17805517532994503</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.08240531244033589</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Halieaceae">
+      <data key="d0">-0.221441978678233</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.2095798104888851</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.17416995189747825</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.15426580297494855</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.004123359929310677</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.16196574591047677</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Unknown_Family">
+      <data key="d0">0.6291358015666855</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.420260075730457</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Stappiaceae">
+      <data key="d0">0.7613630748314892</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.14923264645329237</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.8404511415879469</data>
+    </edge>
+    <edge source="f__Pseudomonadaceae" target="Prod_over_time">
+      <data key="d0">-0.4372950806138306</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.13385847275637128</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.31367823064568046</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Vibrionaceae">
+      <data key="d0">0.5166280938831388</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.18555680092599044</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.29674647296482637</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.07448327955114148</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.07328635700980804</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Colwelliaceae">
+      <data key="d0">2.7016453267896656</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.3367477984055809</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.04306060587119305</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Oligoflexales">
+      <data key="d0">-0.14306265192076406</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.17409522098163</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Halieaceae">
+      <data key="d0">-0.5212605350979356</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.13311719770902997</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-1.0687894977948273</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.4412455221887424</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.12753435307580818</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.4958320890846133</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.2039620318166874</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.5058117843679205</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.036049547508967716</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Unknown_Family">
+      <data key="d0">0.34376903943150383</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.4915255729367026</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.8776564588367121</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.40093318141390366</data>
+    </edge>
+    <edge source="f__Puniceicoccaceae" target="Prod_over_time">
+      <data key="d0">0.014095758388738833</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.10696757043272803</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Flavobacteriaceae">
+      <data key="d0">0.09262346828149087</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Vibrionaceae">
+      <data key="d0">0.4243299432885811</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Rhodobacteraceae">
+      <data key="d0">0.2602400158369511</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Cryomorphaceae">
+      <data key="d0">0.3807981551998729</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Cyclobacteriaceae">
+      <data key="d0">0.09389015732635814</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Marinomonadaceae">
+      <data key="d0">0.3861148314852229</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Pseudomonadaceae">
+      <data key="d0">0.021012567619552253</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Puniceicoccaceae">
+      <data key="d0">0.020309132424765508</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Rhizobiaceae">
+      <data key="d0">-0.7503914462842277</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Halieaceae">
+      <data key="d0">-0.07968829554949952</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Oligoflexales">
+      <data key="d0">-0.07222660314959417</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Hyphomonadaceae">
+      <data key="d0">-0.49533817511627165</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Sneathiellaceae">
+      <data key="d0">0.19664354009089757</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Rubritaleaceae">
+      <data key="d0">0.16732027346965517</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Crocinitomicaceae">
+      <data key="d0">-0.4115761484286351</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Marinobacteraceae">
+      <data key="d0">-0.28628074282437954</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Unknown_Family">
+      <data key="d0">0.12941622956632404</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Parvibaculaceae">
+      <data key="d0">0.013775017789697808</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Stappiaceae">
+      <data key="d0">0.3885474542930377</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.018312841246425182</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="f__Saprospiraceae">
+      <data key="d0">-0.15102721572528077</data>
+    </edge>
+    <edge source="f__Alcanivoracaceae1" target="Prod_over_time">
+      <data key="d0">0.5359476282516124</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.008381900182130142</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.02436718720534748</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Vibrionaceae">
+      <data key="d0">-0.4340319612134597</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.23341816433763252</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.0009009936148350328</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.0676436867690504</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.19483610284057232</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.032224552332710016</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Idiomarinaceae">
+      <data key="d0">0.004847615340316372</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.025793228668829493</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.010111599797130888</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.0044001176598507385</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.07607863042279399</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.0020185186430932284</data>
+    </edge>
+    <edge source="f__Halieaceae" target="f__Saprospiraceae">
+      <data key="d0">0.06081731428726522</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.030078771851508618</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Vibrionaceae">
+      <data key="d0">0.35701471424036296</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.24255992429831394</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.018618096057317013</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.5807684230893364</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.2479914373605171</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.16904516318856258</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Colwelliaceae">
+      <data key="d0">-0.8410849715120905</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.38175221501428985</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Idiomarinaceae">
+      <data key="d0">0.4165308947149278</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.05384801273910822</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Oligoflexales">
+      <data key="d0">-0.9293159244970127</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Rhizobiaceae">
+      <data key="d0">-0.5345522926908768</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.01586086274984172</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Halieaceae">
+      <data key="d0">0.019377856407167604</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.308039881393107</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Sneathiellaceae">
+      <data key="d0">-0.5417291681639763</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Halomonadaceae">
+      <data key="d0">0.029673487078954924</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Unknown_Family">
+      <data key="d0">-1.1398950714186613</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.22794455995406393</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Stappiaceae">
+      <data key="d0">-0.7888961951798654</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.0006911183505292073</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="f__Saprospiraceae">
+      <data key="d0">0.23969307633324632</data>
+    </edge>
+    <edge source="f__Rubritaleaceae" target="Prod_over_time">
+      <data key="d0">0.019850024490586093</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.17079348484413745</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Vibrionaceae">
+      <data key="d0">0.11967031583316864</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.28880136026395864</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.07644993406166756</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.12509566872364242</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.05462735663744278</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.36139478671839886</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.08808113715809497</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Halieaceae">
+      <data key="d0">0.11126201885688805</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.5518981220162545</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.6732700434764571</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.046131120032770145</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.22556132536993612</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Stappiaceae">
+      <data key="d0">0.331759561135754</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.11500852467678783</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="f__Saprospiraceae">
+      <data key="d0">0.5916643476836516</data>
+    </edge>
+    <edge source="f__Crocinitomicaceae" target="Prod_over_time">
+      <data key="d0">-0.10961736746061716</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.2556834442481726</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.22473181913355178</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.3103410204052472</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.08866028225380232</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.12310308268554554</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.060486720981787756</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.2189026464035288</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Oligoflexales">
+      <data key="d0">0.3408923139040817</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">-0.09828163687668334</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Halieaceae">
+      <data key="d0">-0.0002645521856866617</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Sneathiellaceae">
+      <data key="d0">-0.09875274505194634</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.7080761660828686</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.056707209151878823</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Unknown_Family">
+      <data key="d0">0.4477649665350517</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.23016973534423066</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">0.23091452832619713</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Stappiaceae">
+      <data key="d0">1.0222806912158138</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="f__Saprospiraceae">
+      <data key="d0">0.9423351303228636</data>
+    </edge>
+    <edge source="f__Halomonadaceae" target="Prod_over_time">
+      <data key="d0">0.13010419088928857</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.0637489096085867</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Flavobacteriaceae">
+      <data key="d0">-0.24619482759001385</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Vibrionaceae">
+      <data key="d0">0.2801741396536239</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Alteromonadaceae">
+      <data key="d0">-0.04092844005523211</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Rhodobacteraceae">
+      <data key="d0">0.434349654667993</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.12078774352058973</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Colwelliaceae">
+      <data key="d0">0.40756179065010056</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Marinomonadaceae">
+      <data key="d0">0.17905327492104084</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Pseudomonadaceae">
+      <data key="d0">0.30230884012600756</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Idiomarinaceae">
+      <data key="d0">-0.10629604403016661</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Puniceicoccaceae">
+      <data key="d0">0.17664199719655685</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Oligoflexales">
+      <data key="d0">0.15587390680449686</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Rhizobiaceae">
+      <data key="d0">0.031121647890114457</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Halieaceae">
+      <data key="d0">0.3439551153141041</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Hyphomonadaceae">
+      <data key="d0">-0.24998597247369858</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Sneathiellaceae">
+      <data key="d0">0.13995173919644652</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Rubritaleaceae">
+      <data key="d0">-0.394687935251685</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Halomonadaceae">
+      <data key="d0">-0.18531888411864916</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Saccharospirillaceae">
+      <data key="d0">-0.4851165511091329</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Stappiaceae">
+      <data key="d0">-0.09686816271101373</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.03620704099700617</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="f__Saprospiraceae">
+      <data key="d0">0.5185012580299476</data>
+    </edge>
+    <edge source="f__Unknown_Family" target="Prod_over_time">
+      <data key="d0">-0.22351123659709055</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.031069204494702157</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.17012969495269403</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.05774311197854565</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Colwelliaceae">
+      <data key="d0">0.2743511977405144</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.012433259061473079</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.08072830767091838</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.17770862497140472</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Oligoflexales">
+      <data key="d0">-0.778185582429112</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Halieaceae">
+      <data key="d0">-0.08752588194774064</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.2633233714886803</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.1536502969438504</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.12425290228468933</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.10915512477026659</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.0792762640374056</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Stappiaceae">
+      <data key="d0">0.5784546911035715</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.00719908211100781</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="f__Saprospiraceae">
+      <data key="d0">0.1256783115422997</data>
+    </edge>
+    <edge source="f__Saccharospirillaceae" target="Prod_over_time">
+      <data key="d0">-0.03751162322985581</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.1302437942709647</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.2559176346825789</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.19764220047806683</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.25351912041295943</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.05089867764033161</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.013700939366188367</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Idiomarinaceae">
+      <data key="d0">0.1424801877135573</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.19377454529089883</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Oligoflexales">
+      <data key="d0">-0.2957519023226244</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.025417115268155793</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Halieaceae">
+      <data key="d0">0.37000684253706606</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.13718901695779084</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.2920244051985847</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.014398411614704343</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.03532600696177648</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.13756185858760858</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.11228975123279213</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Unknown_Family">
+      <data key="d0">0.016304678838208853</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.11135160625669616</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.2947589523233719</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.14997104774198525</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.18868900845000725</data>
+    </edge>
+    <edge source="f__Stappiaceae" target="Prod_over_time">
+      <data key="d0">0.08215688829047035</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.16636140480940434</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Vibrionaceae">
+      <data key="d0">0.47374431619914725</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.35288066598144374</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.1140722017904186</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.40887142322627096</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.26256041107120176</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.29704082203001403</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Colwelliaceae">
+      <data key="d0">-0.15089088639180015</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.12748161480668704</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Puniceicoccaceae">
+      <data key="d0">1.037202295640702</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Oligoflexales">
+      <data key="d0">0.5630080236114308</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Rhizobiaceae">
+      <data key="d0">-0.5641209862800298</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.07336673146668893</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Halieaceae">
+      <data key="d0">-0.016623831971910974</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.5507364751139123</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.32222939816354823</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.03176184219751377</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.2110179152955092</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Halomonadaceae">
+      <data key="d0">0.07490862207027497</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.023101439765726817</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Unknown_Family">
+      <data key="d0">-0.33366471969370015</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Parvibaculaceae">
+      <data key="d0">0.08383040469425784</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Stappiaceae">
+      <data key="d0">0.21301324832244473</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.3943843832667584</data>
+    </edge>
+    <edge source="f__Pseudohongiellaceae" target="Prod_over_time">
+      <data key="d0">-0.027783803618169706</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.07428064197395366</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.09915886068870572</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.2947107344766593</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.08807672960260982</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.082698043054692</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Colwelliaceae">
+      <data key="d0">0.4622433262508902</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.09597933006788259</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Idiomarinaceae">
+      <data key="d0">0.017162686797841414</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.15574204904599614</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Oligoflexales">
+      <data key="d0">-0.13449348017318352</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Sneathiellaceae">
+      <data key="d0">0.36421063246232555</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Rubritaleaceae">
+      <data key="d0">0.23053880045934275</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Halomonadaceae">
+      <data key="d0">-0.21703707508448278</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Unknown_Family">
+      <data key="d0">-0.31300264053223853</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.29448468230741304</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.21454240088942345</data>
+    </edge>
+    <edge source="f__Saprospiraceae" target="Prod_over_time">
+      <data key="d0">0.09790010075953154</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.03088474802172915</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.21760197671180875</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.05452429043434736</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.0919390853590734</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.05008985003916483</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Colwelliaceae">
+      <data key="d0">-0.27598389234907106</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.1007647789593483</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.06107326970414581</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Oligoflexales">
+      <data key="d0">-1.2262459308516358</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.46722239078377037</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Halieaceae">
+      <data key="d0">0.4704729317673222</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.1558944824609946</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Sneathiellaceae">
+      <data key="d0">-0.19084123461522334</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.3467897997583246</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.08017425011883744</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Unknown_Family">
+      <data key="d0">-0.47703325591756734</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.5148344961590232</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.3730680091651935</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.02754380005759459</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.3370715858227793</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Saprospiraceae">
+      <data key="d0">1.2304709069281061</data>
+    </edge>
+    <edge source="f__Flavobacteriaceae" target="f__Stappiaceae">
+      <data key="d0">0.8851303206525271</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Flavobacteriaceae">
+      <data key="d0">0.3218030466413504</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Vibrionaceae">
+      <data key="d0">-0.2073025315540701</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Rhodobacteraceae">
+      <data key="d0">-0.2178659609530235</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.13521488527509</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Cryomorphaceae">
+      <data key="d0">-0.002600731234758874</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Marinomonadaceae">
+      <data key="d0">0.059555098539038176</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Colwelliaceae">
+      <data key="d0">0.39730278552989795</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Pseudomonadaceae">
+      <data key="d0">-0.15958987209676256</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Idiomarinaceae">
+      <data key="d0">0.17448746480233537</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Oligoflexales">
+      <data key="d0">-1.6523455024756624</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Alcanivoracaceae1">
+      <data key="d0">0.128113185682785</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Halieaceae">
+      <data key="d0">0.8679583641282644</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Rubritaleaceae">
+      <data key="d0">0.20071193857571132</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Crocinitomicaceae">
+      <data key="d0">-0.5868422710053052</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Marinobacteraceae">
+      <data key="d0">-0.1549034550176388</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Unknown_Family">
+      <data key="d0">-0.10513160388401338</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Parvibaculaceae">
+      <data key="d0">0.11990276492098075</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Stappiaceae">
+      <data key="d0">-1.4714395341506692</data>
+    </edge>
+    <edge source="Prod_over_time" target="f__Saprospiraceae">
+      <data key="d0">0.6199867879145398</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.08383078195198113</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Flavobacteriaceae">
+      <data key="d0">0.15756462317335024</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Alteromonadaceae">
+      <data key="d0">-0.03212885749999944</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Cyclobacteriaceae">
+      <data key="d0">0.0341867016643224</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Cryomorphaceae">
+      <data key="d0">0.2286912953218099</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Marinomonadaceae">
+      <data key="d0">-0.23088357835399476</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Colwelliaceae">
+      <data key="d0">0.17172796412477978</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Pseudomonadaceae">
+      <data key="d0">-0.2145487329335554</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Idiomarinaceae">
+      <data key="d0">-0.09787465879129076</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Puniceicoccaceae">
+      <data key="d0">0.14301162401802756</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Alcanivoracaceae1">
+      <data key="d0">0.2602373469076532</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Halieaceae">
+      <data key="d0">1.4398085263739855</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Hyphomonadaceae">
+      <data key="d0">-0.11338280615345547</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Rubritaleaceae">
+      <data key="d0">0.016572043146591345</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Crocinitomicaceae">
+      <data key="d0">-0.0022139146630932513</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Halomonadaceae">
+      <data key="d0">-0.29937252364429295</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Unknown_Family">
+      <data key="d0">-0.0633552312069276</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Marinobacteraceae">
+      <data key="d0">0.11813650290828548</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Saccharospirillaceae">
+      <data key="d0">-0.19039058602531966</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Stappiaceae">
+      <data key="d0">-0.13238867392101733</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Saprospiraceae">
+      <data key="d0">-0.06506316997106465</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="f__Pseudohongiellaceae">
+      <data key="d0">0.07731867062384949</data>
+    </edge>
+    <edge source="f__Oligoflexales" target="Prod_over_time">
+      <data key="d0">0.27298115770330666</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.04363275292873982</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.027539340603345064</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Vibrionaceae">
+      <data key="d0">-0.24256917299043115</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Alteromonadaceae">
+      <data key="d0">0.09985999549464486</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.20816138420378655</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.013329666344715857</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.04650635278879782</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.026820124279263863</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Pseudomonadaceae">
+      <data key="d0">-0.919738730975633</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.01616832512965438</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Rhizobiaceae">
+      <data key="d0">0.09918804742508211</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.6343218503396867</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Oligoflexales">
+      <data key="d0">-0.1380787120031629</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Halieaceae">
+      <data key="d0">2.248308737270528</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.6414867095577501</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.004598103815767113</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Halomonadaceae">
+      <data key="d0">0.07338142645552814</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Unknown_Family">
+      <data key="d0">-0.28321954899465845</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.20611041016426854</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Stappiaceae">
+      <data key="d0">-0.3779204915546788</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.09901051046583395</data>
+    </edge>
+    <edge source="f__Hyphomonadaceae" target="f__Saprospiraceae">
+      <data key="d0">0.03412419226004737</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.04414405418615726</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Vibrionaceae">
+      <data key="d0">0.6289990837972843</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Flavobacteriaceae">
+      <data key="d0">-0.1933285556282392</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Alteromonadaceae">
+      <data key="d0">-0.023172692987468414</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.5029573454998897</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.002160975083380423</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.01623390897963678</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Marinomonadaceae">
+      <data key="d0">-0.2386006924779894</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Colwelliaceae">
+      <data key="d0">0.2732133252951169</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.07022024914493631</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.22911159070962328</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.20705134964682972</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Oligoflexales">
+      <data key="d0">1.6440201714500993</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">-0.03846977563462445</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Halieaceae">
+      <data key="d0">0.9587199748201991</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.2938702795465991</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.16615214483091773</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Unknown_Family">
+      <data key="d0">0.5639200002156547</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Parvibaculaceae">
+      <data key="d0">1.1688657983407877</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.43141714899928485</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Stappiaceae">
+      <data key="d0">0.3817137712023517</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Saprospiraceae">
+      <data key="d0">0.5378825803974665</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.0031707938866051832</data>
+    </edge>
+    <edge source="f__Sneathiellaceae" target="Prod_over_time">
+      <data key="d0">-0.18208864975815567</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.061253521167984215</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Cryomorphaceae">
+      <data key="d0">0.07421351878447663</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Colwelliaceae">
+      <data key="d0">0.46725757096824483</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.255842268228749</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.3495930688050869</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.19817154895842184</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Oligoflexales">
+      <data key="d0">1.215170051443256</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Rhizobiaceae">
+      <data key="d0">-0.04912909397601509</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.04102217736394398</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Hyphomonadaceae">
+      <data key="d0">0.12848934566529882</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Rubritaleaceae">
+      <data key="d0">0.09993664234552925</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Halomonadaceae">
+      <data key="d0">0.059287148631636755</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Unknown_Family">
+      <data key="d0">0.9127320549521547</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Parvibaculaceae">
+      <data key="d0">0.18650051427897962</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Stappiaceae">
+      <data key="d0">0.6657368769859233</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Pseudohongiellaceae">
+      <data key="d0">0.15786311058279248</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="f__Saprospiraceae">
+      <data key="d0">0.8284571240140958</data>
+    </edge>
+    <edge source="f__Marinobacteraceae" target="Prod_over_time">
+      <data key="d0">0.3987181595035754</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.00502244624389786</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.1516438706792706</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Vibrionaceae">
+      <data key="d0">0.13160183326767827</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.05631991452015411</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Rhodobacteraceae">
+      <data key="d0">-0.21006369246298784</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Cryomorphaceae">
+      <data key="d0">0.2749513899140152</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.2507024190177571</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.16619053040857631</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Idiomarinaceae">
+      <data key="d0">0.010678952785526052</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Puniceicoccaceae">
+      <data key="d0">0.08535021462936015</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Oligoflexales">
+      <data key="d0">-0.8013015649966102</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.04194894493458312</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Halieaceae">
+      <data key="d0">0.07589019772274286</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Hyphomonadaceae">
+      <data key="d0">-0.550505378809676</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Sneathiellaceae">
+      <data key="d0">-0.027173795398012457</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Rubritaleaceae">
+      <data key="d0">0.22749356321824024</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Crocinitomicaceae">
+      <data key="d0">-0.3624015196900673</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.2839892509435233</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.5328689824624236</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Unknown_Family">
+      <data key="d0">-0.45654749086070934</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.05905230884100526</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.25664078748072594</data>
+    </edge>
+    <edge source="f__Parvibaculaceae" target="Prod_over_time">
+      <data key="d0">0.256365864831437</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">0.1181484798942841</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Flavobacteriaceae">
+      <data key="d0">0.03541468233086729</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Vibrionaceae">
+      <data key="d0">0.1963977764739206</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.3038512856302227</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">0.19512838423146037</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.22296790979037776</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Marinomonadaceae">
+      <data key="d0">0.04649784312712009</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Colwelliaceae">
+      <data key="d0">0.3785438089767761</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.007409224483433452</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Idiomarinaceae">
+      <data key="d0">-0.0029781656300969517</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.004272320761117769</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Oligoflexales">
+      <data key="d0">-0.7165180330424071</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.2821538952411805</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Halieaceae">
+      <data key="d0">0.36314413646265026</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Hyphomonadaceae">
+      <data key="d0">0.4984896385814267</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Sneathiellaceae">
+      <data key="d0">0.07862856713824593</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Rubritaleaceae">
+      <data key="d0">-0.062481982595322116</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Marinobacteraceae">
+      <data key="d0">0.04836013432078817</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.05815128798077453</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Saccharospirillaceae">
+      <data key="d0">-0.13219356723373493</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Stappiaceae">
+      <data key="d0">-0.8295910393047444</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Saprospiraceae">
+      <data key="d0">0.04940288975460111</data>
+    </edge>
+    <edge source="f__Rhizobiaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.11571486388357555</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Pseudoalteromonadaceae">
+      <data key="d0">-0.009689013998869123</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Vibrionaceae">
+      <data key="d0">-0.4149707217761987</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Rhodobacteraceae">
+      <data key="d0">0.21826244656930813</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Cyclobacteriaceae">
+      <data key="d0">-0.005883030941937539</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Cryomorphaceae">
+      <data key="d0">-0.29147280815971205</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Colwelliaceae">
+      <data key="d0">-1.3092824988282</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Pseudomonadaceae">
+      <data key="d0">0.28434478125173057</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Puniceicoccaceae">
+      <data key="d0">-0.4309103877913674</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Oligoflexales">
+      <data key="d0">-1.372948881517408</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Alcanivoracaceae1">
+      <data key="d0">0.02673502837034475</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Halieaceae">
+      <data key="d0">0.8940238074081359</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Sneathiellaceae">
+      <data key="d0">-0.6208855754377077</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Crocinitomicaceae">
+      <data key="d0">0.1922266029398926</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Halomonadaceae">
+      <data key="d0">-0.05026534499310478</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Marinobacteraceae">
+      <data key="d0">-0.26005166358616727</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Unknown_Family">
+      <data key="d0">-0.46275133744595537</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Parvibaculaceae">
+      <data key="d0">-0.6581546663699899</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Stappiaceae">
+      <data key="d0">-0.879101972431199</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Saprospiraceae">
+      <data key="d0">-0.8669436958981969</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="f__Pseudohongiellaceae">
+      <data key="d0">-0.3117413689669868</data>
+    </edge>
+    <edge source="f__Idiomarinaceae" target="Prod_over_time">
+      <data key="d0">-0.3755709807022234</data>
+    </edge>
+  </graph>
+</graphml>
